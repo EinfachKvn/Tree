@@ -6,56 +6,121 @@
     <title>Wartungsüberprüfungen</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #d3d3d3; /* Dunklerer Grauton */
-            color: #333;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: #1e1e1e; /* Dunkles Grau */
+            color: #e0e0e0; /* Helles Grau für Text */
             text-align: center;
-            line-height: 1.6; /* Verbesserte Lesbarkeit */
+            line-height: 1.8;
+            margin: 0;
+            padding: 40px 20px;
+            overflow-x: hidden;
         }
         h1 {
-            color: #b03a2e; /* Dunkleres Rot für den Haupttitel */
-            margin-bottom: 20px; /* Abstand unter dem Titel */
+            color: #ff4d4d; /* Leuchtendes Rot */
+            font-size: 2.8em;
+            text-shadow: 3px 3px 8px rgba(255, 77, 77, 0.4);
+            margin-bottom: 50px;
+            animation: fadeIn 1.5s ease-in-out;
         }
         .container {
-            margin: 20px auto;
-            padding: 30px; /* Mehr Padding für eine luftige Anordnung */
-            max-width: 800px;
-            background-color: #2c3e50; /* Dunklerer Hintergrund für die Container */
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Deutlichere Schatten */
+            margin: 0 auto;
+            padding: 40px;
+            max-width: 950px;
+            background: #2b2b2b; /* Etwas helleres Grau */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
         }
         .group {
-            margin-bottom: 30px; /* Mehr Abstand zwischen den Gruppen */
+            margin-bottom: 0;
+            padding: 20px;
+            background: rgba(43, 43, 43, 0.9);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 calc(50% - 15px); /* Zwei Gruppen pro Zeile, mit Abstand */
+            min-width: 300px; /* Mindestbreite für responsives Verhalten */
+        }
+        .group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 77, 77, 0.3);
         }
         .group h2 {
-            color: #e74c3c; /* Helleres Rot für die Gruppentitel */
-            margin-bottom: 10px; /* Abstand unter dem Gruppentitel */
-            font-size: 1.5em; /* Größerer Schriftgrad für die Gruppentitel */
+            color: #ff6666; /* Sanftes Rot */
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #ff4d4d;
+            display: inline-block;
+            padding-bottom: 5px;
+            animation: slideIn 1s ease-out;
         }
         .link-list {
             list-style-type: none;
-            padding: 0; /* Kein Padding für die Liste */
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         .link-list li {
-            margin: 20px 0; /* Größerer Abstand zwischen den Links */
+            margin: 10px 0;
         }
         .link-list a {
             text-decoration: none;
-            color: #fff; /* Weißer Text für die Links */
-            background-color: #e74c3c; /* Helleres Rot für den Link-Hintergrund */
-            padding: 12px 20px; /* Mehr Padding für die Links */
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s; /* Hinzufügen einer Transformation für Hover */
+            color: #fff;
+            background: #ff4d4d;
+            padding: 12px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-list a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .link-list a:hover::before {
+            width: 300px;
+            height: 300px;
         }
         .link-list a:hover {
-            background-color: #c0392b; /* Dunkleres Rot beim Hover */
-            transform: scale(1.05); /* Leichte Vergrößerung beim Hover */
+            background: #cc0000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        /* Responsives Design */
+        @media (max-width: 768px) {
+            .group {
+                flex: 1 1 100%; /* Auf kleinen Bildschirmen untereinander */
+            }
         }
     </style>
-    
 </head>
 <body>
-
     <h1>Wartungsüberprüfungen</h1>
 
     <div class="container">
@@ -135,7 +200,7 @@
         </div>
 
         <div class="group">
-            <h2>WLAN Controller</h2>
+            <h2>Firewall</h2>
             <ul class="link-list">
                 <li><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=mSDyztFz-UK4WhbEG8NoP1-uidJGJDFHoreKjqOXFflUNVZSOTM5MU1ZUUw0NDNDNEVJRlFXWTdYNy4u" target="_blank">Wartungsüberprüfung Jährlich (Firewall)</a></li>
             </ul>
@@ -150,6 +215,5 @@
             </ul>
         </div>
     </div>
-
 </body>
 </html>
